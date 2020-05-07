@@ -26,8 +26,10 @@ try{
   echo 'DB接続エラー: ' . $e->getMessage();
 }
 
-$count = $db->exec('INSERT INTO my_items SET maker_id=1,item_name="もも",price=210,keyword="缶詰,甘い,ピンク"');
-echo $count . '件のデータを挿入しました';
+$recods = $db->query('SELECT * FROM my_items');
+while($recod = $recods->fetch()){
+  print($recod['item_name'] . "\n");
+}
 ?>
 </pre>
 </main>
