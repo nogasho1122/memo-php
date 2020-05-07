@@ -26,16 +26,15 @@ try{
   echo 'DB接続エラー: ' . $e->getMessage();
 }
 
-$memos = $db->query('SELECT * FROM memos ORDER BY id DESC');
+$memos = $db->query('SELECT * FROM memos WHERE id=5');
+$memo = $memos->fetch();
 ?>
-
 <article>
-  <?php while ($memo = $memos->fetch()):?>
-    <p><a href ="#"><?php print(mb_substr($memo['memo'],0,50));?></p>
-    <time><?php print($memo['created_at']);?></time>
-    <hr>
-  <?php endwhile; ?>
+  <pre><?php print($memo['memo']); ?></pre>
+
+  <a href ="index.php">戻る</a>
 </article>
+
 </main>
 </body>    
 </html>
